@@ -1,7 +1,13 @@
+import FormularioCadastro from "./components/FormularioCadastro";
+import ListaNotas from "./components/ListaNotas";
+
 function App() {
-  return <div className="App">
-    Opa
-  </div>;
+  return (
+    <section>
+      <FormularioCadastro />
+      <ListaNotas />
+    </section>
+  );
 }
 
 export default App;

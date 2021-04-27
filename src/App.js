@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CategoryList from "./components/CategoryList/CategoryList";
 import FormularioCadastro from "./components/FormularioCadastro";
 import ListaNotas from "./components/ListaNotas/ListaNotas";
 
@@ -7,6 +8,7 @@ export default class App extends Component {
     super();
     this.state = {
       notes: [],
+      categories: [],
     };
   }
 
@@ -23,10 +25,19 @@ export default class App extends Component {
     this.setState({ notes: [...notes] });
   };
 
+  _addCategory = (name) => {
+    const newCategories = [...this.state.categories, { name: name }];
+    this.setState({ categories: newCategories });
+  };
+
   render() {
     return (
       <section>
         <FormularioCadastro createNote={this._createNote} />
+        <CategoryList
+          categories={this.state.categories}
+          addCategory={this._addCategory}
+        />
         <ListaNotas notes={this.state.notes} removeNote={this._removeNote} />
       </section>
     );

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { ReactComponent as DeleteIcon } from "../../assets/icons/delete.svg";
 import "./card-nota.css";
-export default class CardNota extends Component {
+
+export default class CardNote extends Component {
   render() {
     return (
       <section className="card-nota">
@@ -8,7 +10,10 @@ export default class CardNota extends Component {
           <h3>{this.props.title}</h3>
         </header>
         <p>{this.props.text}</p>
-        <button onClick={this.props.removeNote}>Delete</button>
+        <DeleteIcon />
+        <button onClick={this.props.removeNote}>
+          <DeleteIcon /> Delete
+        </button>
       </section>
     );
   }

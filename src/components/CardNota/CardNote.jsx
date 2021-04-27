@@ -10,7 +10,6 @@ export default class CardNote extends Component {
           <h3>{this.props.title}</h3>
         </header>
         <p>{this.props.text}</p>
-        <DeleteIcon />
         <button onClick={this.props.removeNote}>
           <DeleteIcon /> Delete
         </button>

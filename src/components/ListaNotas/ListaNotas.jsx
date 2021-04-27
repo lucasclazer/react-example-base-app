@@ -7,7 +7,6 @@ export default function ListaNotas(props) {
       {props.notes &&
         props.notes.map((note, index) => (
           <li className="lista-notas--item" key={index}>
-            {/* <div>{note}</div> */}
             <CardNote
               title={note.title}
               text={note.text}

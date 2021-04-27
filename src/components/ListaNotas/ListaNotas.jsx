@@ -1,5 +1,5 @@
 import React from "react";
-import CardNota from "../CardNota/CardNota";
+import CardNote from "../CardNota/CardNote";
 
 export default function ListaNotas(props) {
   return (
@@ -8,7 +8,7 @@ export default function ListaNotas(props) {
         props.notes.map((note, index) => (
           <li className="lista-notas--item" key={index}>
             {/* <div>{note}</div> */}
-            <CardNota
+            <CardNote
               title={note.title}
               text={note.text}
               removeNote={() => props.removeNote && props.removeNote(index)}

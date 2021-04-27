@@ -13,10 +13,8 @@ export default class App extends Component {
   }
 
   _createNote = (title, text) => {
-    console.log("Note was created at view title:", title, "text", text);
     const newNotes = [...this.state.notes, { title: title, text: text }];
     this.setState({ notes: newNotes });
-    console.log("this.state.notes", this.state.notes, "newNotes", newNotes);
   };
 
   _removeNote = (index) => {
@@ -33,7 +31,10 @@ export default class App extends Component {
   render() {
     return (
       <section>
-        <FormularioCadastro createNote={this._createNote} />
+        <FormularioCadastro
+          createNote={this._createNote}
+          categories={this.state.categories}
+        />
         <CategoryList
           categories={this.state.categories}
           addCategory={this._addCategory}

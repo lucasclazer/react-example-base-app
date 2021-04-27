@@ -2,14 +2,6 @@ import React from "react";
 
 export default function CategoryList(props) {
   const _handleInputAddCategory = (e) => {
-    console.log(
-      "e",
-      e.key,
-      "e.tartget",
-      e.target.value,
-      "props",
-      props.addCategory
-    );
     if (e.key === "Enter")
       props.addCategory && props.addCategory(e.target.value);
   };

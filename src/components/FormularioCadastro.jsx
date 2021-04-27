@@ -22,23 +22,22 @@ export default class FormularioCadastro extends Component {
     e.preventDefault();
     e.stopPropagation();
     this.props.createNote && this.props.createNote(this.title, this.textArea);
-    console.log("New note was created with success!");
   };
 
   render() {
     return (
       <form onSubmit={this._createNote}>
-        <input
-          type="text"
-          placeholder="title"
-          // value={this.title}
-          onChange={this._handleTitle}
-        />
+        <select>
+          {this.props.categories &&
+            this.props.categories.map((category) => (
+              <option>{category.name}</option>
+            ))}
+        </select>
+        <input type="text" placeholder="title" onChange={this._handleTitle} />
         <textarea
           type="text"
           rows={15}
           placeholder="Escreva a sua nota..."
-          // value={this.textArea}
           onChange={this._handleTextArea}
         />
         <button type="submit">Criar Nota</button>

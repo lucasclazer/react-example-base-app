@@ -8,6 +8,7 @@ export default class CardNote extends Component {
       <section className="card-nota">
         <header>
           <h3>{this.props.title}</h3>
+          <h4>{this.props.categoryName}</h4>
         </header>
         <p>{this.props.text}</p>
         <button onClick={this.props.removeNote}>

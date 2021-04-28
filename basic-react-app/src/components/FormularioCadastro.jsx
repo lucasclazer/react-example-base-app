@@ -21,7 +21,7 @@ export default class FormularioCadastro extends Component {
   _createNote = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    this.props.createNote && this.props.createNote(this.title, this.textArea);
+    this.props.createNote && this.props.createNote(this.title, this.textArea, this.category);
   };
 
   render() {

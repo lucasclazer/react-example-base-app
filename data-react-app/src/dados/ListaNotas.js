@@ -25,5 +25,7 @@ export default class ListaNotas {
     this._incritos.forEach((func) => func(this.notas));
   }
 
-  desincrever() {}
+  desinscrever(func) {
+    this._incritos = this._incritos.filter((f) => f !== func);
+  }
 }

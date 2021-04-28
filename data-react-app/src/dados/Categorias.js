@@ -18,5 +18,7 @@ export default class Categorias {
     this._incritos.forEach((func) => func(this.categorias));
   }
 
-  desincrever() {}
+  desinscrever(func) {
+    this._incritos = this._incritos.filter(f => f !== func);
+  }
 }

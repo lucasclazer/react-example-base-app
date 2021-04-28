@@ -6,6 +6,8 @@ export default class Categorias {
 
   adicionarCategoria(novaCategoria) {
     this.categorias.push(novaCategoria);
+    console.log("Categoria nova adicionada", this.categorias);
+    this.notificar();
   }
 
   inscrever(func) {
@@ -13,9 +15,8 @@ export default class Categorias {
   }
 
   notificar() {
-    this._incritos.forEach(func => func());
+    this._incritos.forEach((func) => func(this.categorias));
   }
 
   desincrever() {}
-
 }

@@ -1,15 +1,25 @@
-import React from "react";
-import { Button, TextField } from "@material-ui/core";
+import React, { useState } from "react";
+import { Button, FormControlLabel, Switch, TextField } from "@material-ui/core";
 
 export default function FormularioCadastro() {
+  const [nome, setNome] = useState();
+
   return (
-    <form>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <TextField
         id="nome"
         label="Nome"
         variant="outlined"
         margin="normal"
         fullWidth
+        value={nome}
+        onChange={(e) => {
+          setNome(e.target.value);
+        }}
       />
       <TextField
         id="sobrenome"
@@ -25,11 +35,31 @@ export default function FormularioCadastro() {
         margin="normal"
         fullWidth
       />
-      <TextField id="nome" label="Promoções" />
-      <TextField id="nome" label="Novidades" />
+      <FormControlLabel
+        label="Promoções"
+        control={
+          <Switch
+            id="promocoes"
+            name="promocoes"
+            color="primary"
+            defaultChecked={true}
+          />
+        }
+      ></FormControlLabel>
+      <FormControlLabel
+        label="Novidades"
+        control={
+          <Switch
+            id="novidades"
+            name="novidades"
+            color="primary"
+            defaultChecked={true}
+          />
+        }
+      ></FormControlLabel>
 
       <Button type="submit" variant="contained" color="primary">
-        Teste
+        Cadastrar
       </Button>
     </form>
   );

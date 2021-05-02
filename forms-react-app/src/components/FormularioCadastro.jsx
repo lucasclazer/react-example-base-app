@@ -54,7 +54,8 @@ export default function FormularioCadastro() {
             id="promocoes"
             name="promocoes"
             color="primary"
-            defaultChecked={true}
+            checked={promocoes}
+            onChange={(e) => setPromocoes(e.target.checked)}
           />
         }
       ></FormControlLabel>
@@ -65,9 +66,10 @@ export default function FormularioCadastro() {
             id="novidades"
             name="novidades"
             color="primary"
-            defaultChecked={true}
+            checked={novidades}
+            onChange={(e) => setNovidades(e.target.checked)}
           />
-        }
+       }
       ></FormControlLabel>
 
       <Button type="submit" variant="contained" color="primary">

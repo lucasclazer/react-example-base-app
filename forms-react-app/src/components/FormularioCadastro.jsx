@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import { Button, FormControlLabel, Switch, TextField } from "@material-ui/core";
 
-export default function FormularioCadastro() {
+export default function FormularioCadastro({ onSubmit, validateCpf }) {
   const [nome, setNome] = useState();
   const [sobrenome, setSobrenome] = useState();
-  const [cpf, setCpf] = useState();
+  const [cpf, setCpf] = useState("");
   const [promocoes, setPromocoes] = useState(true);
   const [novidades, setNovidades] = useState(true);
-
+  
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        onSubmit({
+          nome,
+          sobrenome,
+          cpf,
+          promocoes,
+          novidades,
+        });
       }}
     >
       <TextField
@@ -43,6 +50,8 @@ export default function FormularioCadastro() {
         margin="normal"
         fullWidth
         value={cpf}
+        error={validateCpf(cpf)}
+        helperText={() => validateCpf(cpf)}
         onChange={(e) => {
           setCpf(e.target.value);
         }}
@@ -69,7 +78,7 @@ export default function FormularioCadastro() {
             checked={novidades}
             onChange={(e) => setNovidades(e.target.checked)}
           />
-       }
+        }
       ></FormControlLabel>
 
       <Button type="submit" variant="contained" color="primary">

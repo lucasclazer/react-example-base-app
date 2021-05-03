@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, FormControlLabel, Switch, TextField } from "@material-ui/core";
 
-export default function DadosPessoais({ onSubmit, validateCpf }) {
+export default function DadosPessoais({ onSubmit, validateCpf, nextStep }) {
   const [nome, setNome] = useState();
   const [sobrenome, setSobrenome] = useState();
   const [cpf, setCpf] = useState("");
@@ -19,6 +19,7 @@ export default function DadosPessoais({ onSubmit, validateCpf }) {
           promocoes,
           novidades,
         });
+        nextStep();
       }}
     >
       <TextField

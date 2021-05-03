@@ -10,7 +10,6 @@ export default function DadosUsuario({ onSubmit, nextStep }) {
       onSubmit={(e) => {
         e.preventDefault();
         onSubmit({ email, senha });
-        nextStep();
       }}
     >
       <TextField
@@ -33,7 +32,7 @@ export default function DadosUsuario({ onSubmit, nextStep }) {
         }}
         id="senha"
         label="Senha"
-        type="passowrd"
+        type="password"
         required
         variant="outlined"
         margin="normal"

@@ -25,6 +25,7 @@ export default function DadosEntrega({ onSubmit }) {
         type="number"
         variant="outlined"
         margin="normal"
+        required
       />
       <TextField
         value={endereco}
@@ -36,6 +37,7 @@ export default function DadosEntrega({ onSubmit }) {
         type="text"
         variant="outlined"
         margin="normal"
+        required
         fullWidth
       />
       <TextField
@@ -48,6 +50,7 @@ export default function DadosEntrega({ onSubmit }) {
         type="number"
         variant="outlined"
         margin="normal"
+        required
       />
       <TextField
         value={estado}
@@ -59,6 +62,7 @@ export default function DadosEntrega({ onSubmit }) {
         type="text"
         variant="outlined"
         margin="normal"
+        required
       />
       <TextField
         value={cidade}
@@ -70,8 +74,9 @@ export default function DadosEntrega({ onSubmit }) {
         type="text"
         variant="outlined"
         margin="normal"
+        required
       />
-      <Button type="submit" variant="contained" color="primary">
+      <Button type="submit" variant="contained" color="primary" fullWidth>
         Finalizar Cadastro
       </Button>
     </form>

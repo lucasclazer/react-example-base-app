@@ -19,7 +19,6 @@ export default function DadosPessoais({ onSubmit, validateCpf, nextStep }) {
           promocoes,
           novidades,
         });
-        nextStep();
       }}
     >
       <TextField

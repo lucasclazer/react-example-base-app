@@ -1,15 +1,23 @@
 import { Button, TextField } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 
-export default function DadosUsuario({ nextStep }) {
+export default function DadosUsuario({ onSubmit, nextStep }) {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        onSubmit({ email, senha });
         nextStep();
       }}
     >
       <TextField
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
         id="email"
         label="Email"
         type="email"
@@ -19,6 +27,10 @@ export default function DadosUsuario({ nextStep }) {
         fullWidth
       />
       <TextField
+        value={senha}
+        onChange={(e) => {
+          setSenha(e.target.value);
+        }}
         id="senha"
         label="Senha"
         type="passowrd"

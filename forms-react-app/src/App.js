@@ -4,6 +4,7 @@ import "./App.css";
 import FormularioCadastro from "./components/FormularioCadastro";
 import "fontsource-roboto";
 import { validateCpf, validatePassword } from "./helpers/form-validation";
+import ValidationsRegisterForms from "./context/ValidationsRegisterForms";
 class App extends Component {
   _onSubmit = (form) => {
     console.log("form submited:", form);
@@ -15,10 +16,12 @@ class App extends Component {
         <Typography align="center" variant="h3" component="h1">
           Formulário de cadastro
         </Typography>
-        <FormularioCadastro
-          onSubmit={this._onSubmit}
-          validations={{ cpf: validateCpf, password: validatePassword }}
-        />
+
+        <ValidationsRegisterForms.Provider
+          value={{ cpf: validateCpf, password: validatePassword }}
+        >
+          <FormularioCadastro onSubmit={this._onSubmit} />
+        </ValidationsRegisterForms.Provider>
       </Container>
     );
   }

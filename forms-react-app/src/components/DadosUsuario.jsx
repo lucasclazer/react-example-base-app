@@ -1,10 +1,12 @@
 import { Button, TextField } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import ValidationsRegisterForms from "../context/ValidationsRegisterForms";
 
-export default function DadosUsuario({ onSubmit, validations }) {
+export default function DadosUsuario({ onSubmit }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({ password: "" });
+  const validations = useContext(ValidationsRegisterForms);
 
   const validateField = (e) => {
     const { name, value } = e.target;

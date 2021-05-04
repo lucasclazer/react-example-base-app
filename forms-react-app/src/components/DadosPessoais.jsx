@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, FormControlLabel, Switch, TextField } from "@material-ui/core";
+import ValidationsRegisterForms from "../context/ValidationsRegisterForms";
 
-export default function DadosPessoais({ onSubmit, validations }) {
+export default function DadosPessoais({ onSubmit }) {
   const [nome, setNome] = useState();
   const [sobrenome, setSobrenome] = useState();
   const [cpf, setCpf] = useState("");
   const [promocoes, setPromocoes] = useState(true);
   const [novidades, setNovidades] = useState(true);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({ cpf: false });
+
+  const validations = useContext(ValidationsRegisterForms);
 
   const validateField = (e) => {
     const { name, value } = e.target;
@@ -18,17 +21,28 @@ export default function DadosPessoais({ onSubmit, validations }) {
     console.log("new Errors", newErrors);
   };
 
+  const validateForm = () => {
+    console.log("errors", errors);
+    for (let field in errors) {
+      if (errors[field]) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        onSubmit({
-          nome,
-          sobrenome,
-          cpf,
-          promocoes,
-          novidades,
-        });
+        if (validateForm())
+          onSubmit({
+            nome,
+            sobrenome,
+            cpf,
+            promocoes,
+            novidades,
+          });
       }}
     >
       <TextField
@@ -38,6 +52,7 @@ export default function DadosPessoais({ onSubmit, validations }) {
         margin="normal"
         fullWidth
         value={nome}
+        required
         onChange={(e) => {
           setNome(e.target.value);
         }}
@@ -48,6 +63,7 @@ export default function DadosPessoais({ onSubmit, validations }) {
         variant="outlined"
         margin="normal"
         fullWidth
+        required
         value={sobrenome}
         onChange={(e) => {
           setSobrenome(e.target.value);
@@ -63,6 +79,7 @@ export default function DadosPessoais({ onSubmit, validations }) {
         value={cpf}
         error={errors.cpf}
         helperText={errors.cpf}
+        required
         onChange={(e) => {
           setCpf(e.target.value);
         }}
@@ -94,7 +111,7 @@ export default function DadosPessoais({ onSubmit, validations }) {
       ></FormControlLabel>
 
       <Button type="submit" variant="contained" color="primary">
-        Cadastrar
+        Proximo
       </Button>
     </form>
   );

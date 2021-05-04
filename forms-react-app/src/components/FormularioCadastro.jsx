@@ -4,9 +4,11 @@ import DadosEntrega from "./DadosEntrega";
 import DadosPessoais from "./DadosPessoais";
 import DadosUsuario from "./DadosUsuario";
 
-export default function FormularioCadastro({ onSubmit, validateCpf }) {
+export default function FormularioCadastro({ validations }) {
   const [actualStep, setActualStep] = useState(0);
   const [formData, setFormData] = useState({});
+
+  console.log("validations", validations);
 
   useEffect(() => {
     console.log("FormData Changed:", formData);
@@ -22,9 +24,10 @@ export default function FormularioCadastro({ onSubmit, validateCpf }) {
   };
 
   const forms = [
-    <DadosUsuario onSubmit={_mergeFormData} />,
-    <DadosPessoais onSubmit={_mergeFormData} validateCpf={validateCpf} />,
-    <DadosEntrega onSubmit={_mergeFormData} />,
+    <DadosUsuario onSubmit={_mergeFormData} validations={validations} />,
+    <DadosPessoais onSubmit={_mergeFormData} validations={validations} />,
+    <DadosEntrega onSubmit={_mergeFormData} validations={validations} />,
+    <Typography variant="h5">Obrigado por se cadastrar!</Typography>,
   ];
 
   function getActualForm(step) {

@@ -3,17 +3,10 @@ import { Component } from "react";
 import "./App.css";
 import FormularioCadastro from "./components/FormularioCadastro";
 import "fontsource-roboto";
+import { validateCpf, validatePassword } from "./helpers/form-validation";
 class App extends Component {
   _onSubmit = (form) => {
     console.log("form submited:", form);
-  };
-
-  _validateCpf = (cpf) => {
-    if (cpf && cpf.length !== 11) {
-      return "Cpf deve ter 11 digitos";
-    } else {
-      return;
-    }
   };
 
   render() {
@@ -24,7 +17,7 @@ class App extends Component {
         </Typography>
         <FormularioCadastro
           onSubmit={this._onSubmit}
-          validateCpf={this._validateCpf}
+          validations={{ cpf: validateCpf, password: validatePassword }}
         />
       </Container>
     );

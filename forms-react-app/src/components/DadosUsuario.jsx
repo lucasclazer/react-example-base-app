@@ -1,15 +1,37 @@
 import { Button, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 
-export default function DadosUsuario({ onSubmit, nextStep }) {
+export default function DadosUsuario({ onSubmit, validations }) {
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({ password: "" });
+
+  const validateField = (e) => {
+    const { name, value } = e.target;
+    const validated = validations[name](value);
+    const newErrors = { ...errors };
+    newErrors[name] = validated;
+    setErrors(newErrors);
+    console.log("new Errors", newErrors);
+  };
+
+  const validateForm = () => {
+    console.log("errors", errors);
+    for (let field in errors) {
+      if (errors[field]) {
+        return false;
+      }
+    }
+    return true;
+  };
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        onSubmit({ email, senha });
+        if (validateForm()) {
+          onSubmit({ email, password });
+        }
       }}
     >
       <TextField
@@ -26,12 +48,16 @@ export default function DadosUsuario({ onSubmit, nextStep }) {
         fullWidth
       />
       <TextField
-        value={senha}
+        value={password}
         onChange={(e) => {
-          setSenha(e.target.value);
+          setPassword(e.target.value);
         }}
-        id="senha"
-        label="Senha"
+        error={errors.password}
+        helperText={errors.password}
+        onBlur={validateField}
+        id="password"
+        name="password"
+        label="Password"
         type="password"
         required
         variant="outlined"

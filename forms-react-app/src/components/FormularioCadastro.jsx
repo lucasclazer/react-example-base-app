@@ -24,9 +24,9 @@ export default function FormularioCadastro({ validations }) {
   };
 
   const forms = [
-    <DadosUsuario onSubmit={_mergeFormData} validations={validations} />,
-    <DadosPessoais onSubmit={_mergeFormData} validations={validations} />,
-    <DadosEntrega onSubmit={_mergeFormData} validations={validations} />,
+    <DadosUsuario onSubmit={_mergeFormData} />,
+    <DadosPessoais onSubmit={_mergeFormData} />,
+    <DadosEntrega onSubmit={_mergeFormData} />,
     <Typography variant="h5">Obrigado por se cadastrar!</Typography>,
   ];
 

@@ -32,7 +32,7 @@ export default function Categoria() {
               className={`lista-categorias__categoria lista-categorias__categoria--${id}`}
               key={subCategorie}
             >
-              <Link to={`${url}${subCategorie}`}>{subCategorie}</Link>
+              <Link to={`${url}/${subCategorie}`}>{subCategorie}</Link>
             </li>
           ))}
       </ul>
@@ -40,7 +40,7 @@ export default function Categoria() {
         <Route exact path={`${path}/`}>
           <ListaPost url={`/posts?categoria=${id}`} />
         </Route>
-        <Route exact path={`/${path}/:subcategoria`}>
+        <Route exact path={`${path}/:subcategoria`}>
           <SubCategoria />
         </Route>
       </Switch>

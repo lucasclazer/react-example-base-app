@@ -4,10 +4,10 @@ import ListaPost from "./ListaPost";
 
 export default function SubCategoria() {
   const { subcategoria } = useParams();
-
+  console.log("subCategoria teste", subcategoria);
   return (
     <>
-      <ListaPost url={`/posts?subCategoria=${subcategoria}`} />
+      <ListaPost url={`/posts?subcategoria=${subcategoria}`} />
     </>
   );
 }

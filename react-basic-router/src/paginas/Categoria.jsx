@@ -13,9 +13,10 @@ export default function Categoria() {
   const [subCategories, setSubCategories] = useState([]);
 
   useEffect(() => {
-    busca(`/categorias/${id}`, (categoria) =>
-      setSubCategories(categoria.subCategories)
-    );
+    busca(`/categorias/${id}`, (categoria) => {
+      console.log("categoria", categoria);
+      setSubCategories(categoria.subcategorias);
+    }).catch((err) => setSubCategories([]));
   }, [id]);
 
   return (
@@ -39,7 +40,7 @@ export default function Categoria() {
         <Route exact path={`${path}/`}>
           <ListaPost url={`/posts?categoria=${id}`} />
         </Route>
-        <Route exact path={`${path}/:subcategoria`}>
+        <Route exact path={`/${path}/:subcategoria`}>
           <SubCategoria />
         </Route>
       </Switch>

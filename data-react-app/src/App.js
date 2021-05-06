@@ -9,7 +9,7 @@ import ListaNotas from "./dados/ListaNotas";
 
 class App extends Component {
   constructor() {
-    super();
+    super();adsadsad
     this.categorias = new Categorias();
     this.notas = new ListaNotas();
   }

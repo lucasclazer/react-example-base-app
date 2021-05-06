@@ -14,7 +14,6 @@ export default function Categoria() {
 
   useEffect(() => {
     busca(`/categorias/${id}`, (categoria) => {
-      console.log("categoria", categoria);
       setSubCategories(categoria.subcategorias);
     }).catch((err) => setSubCategories([]));
   }, [id]);

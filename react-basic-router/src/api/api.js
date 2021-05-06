@@ -8,7 +8,6 @@ export const busca = async (url, setData) => {
   try {
     const resp = await api.get(url);
     resp.data && setData(resp.data);
-    console.log("url", url, "resp.data", resp.data);
   } catch (error) {
     setData([]);
     console.error("Error on search", error);

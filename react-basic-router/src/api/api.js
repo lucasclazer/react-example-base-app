@@ -11,5 +11,6 @@ export const busca = async (url, setData) => {
   } catch (error) {
     setData([]);
     console.error("Error on search", error);
+    return Promise.reject(error);
   }
 };

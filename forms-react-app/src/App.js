@@ -9,7 +9,6 @@ class App extends Component {
   _onSubmit = (form) => {
     console.log("form submited:", form);
   };
-  a;
   render() {
     return (
       <Container component="article" maxWidth="sm">

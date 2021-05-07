@@ -17,4 +17,7 @@ export const temaEscuro = {
   body: fundEscuro,
   inside: conteudoEscuro,
   text: textoFundoEscuro,
+  filter: "invert(100%)"
 };
+
+

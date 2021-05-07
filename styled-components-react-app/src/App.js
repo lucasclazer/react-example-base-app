@@ -16,7 +16,7 @@ function App() {
     <>
       <ThemeProvider theme={theme ? temaClaro : temaEscuro}>
         <BtnTema onClick={toggleTheme}>
-          <ThemeSwitch />
+          <ThemeSwitch theme={theme} />
         </BtnTema>
         <GlobalStyle />
         <Cabecalho />

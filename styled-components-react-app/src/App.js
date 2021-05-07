@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
 
 import Cabecalho from "./Components/Cabecalho";
 import Container from "./Components/Container";
 import { GlobalStyle } from "./Components/GlobalStyle";
-import { temaEscuro } from "./Components/UI/temas";
+import ThemeSwitch from "./Components/ThemeSwitch/ThemeSwitch";
+import { BtnTema } from "./Components/UI";
+import { temaClaro, temaEscuro } from "./Components/UI/temas";
 function App() {
+  const [theme, setTheme] = useState(true);
+  const toggleTheme = () => {
+    setTheme(!theme);
+  };
   return (
     <>
-      <ThemeProvider theme={temaEscuro}>
-
-      <GlobalStyle />
-      <Cabecalho />
-      <Container />
+      <ThemeProvider theme={theme ? temaClaro : temaEscuro}>
+        <BtnTema onClick={toggleTheme}>
+          <ThemeSwitch />
+        </BtnTema>
+        <GlobalStyle />
+        <Cabecalho />
+        <Container />
       </ThemeProvider>
     </>
   );

@@ -39,12 +39,12 @@ describe("Test Main app.js", () => {
 
     });
     it('check withdraw realized', ()=>{
-      const {getByText, getByTestId, getByLabelText } = render(<App />);
+      render(<App />); //testing by using "screen" object
     
-      const balance = getByText("R$ 1000");
-      const trasaction = getByLabelText('Saque')
-      const value = getByTestId('valor')
-      const transactionButton = getByText('Realizar operação')
+      const balance = screen.getByText("R$ 1000");
+      const trasaction = screen.getByLabelText('Saque')
+      const value = screen.getByTestId('valor')
+      const transactionButton = screen.getByText('Realizar operação')
 
       expect(balance.textContent).toBe('R$ 1000') //check bank default value
       

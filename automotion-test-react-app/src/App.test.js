@@ -56,8 +56,6 @@ describe("Test Main app.js", () => {
       //verify final account balance 
       expect(balance.textContent).toBe('R$ 900')   
     })
-
-
   })
 
 });
